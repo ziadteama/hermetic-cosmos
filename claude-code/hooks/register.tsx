@@ -112,7 +112,7 @@ const startedAt = atom({ plugin: 'hermetic-cosmos', key: 'startedAt' } as const,
 
 // a seed sprouting into a flower, then the moon turning, in place of Claude's orange star
 const GLYPHS: [string, string][] = [
-  ['·', C.bark], ['⸳', C.bark], ['ᵥ', C.moss], ['ᛘ', C.moss], ['Ψ', C.moss], ['✿', C.rose],
+  ['·', C.bark], ['˙', C.bark], ['ᵥ', C.moss], ['ψ', C.moss], ['Ψ', C.moss], ['✿', C.rose],
   ['❀', C.rose], ['✿', C.rose], ['☽', C.silver], ['◐', C.silver], ['○', C.gold], ['◑', C.silver],
   ['☾', C.silver], ['✶', C.gold], ['✦', C.gold], ['·', C.violet],
 ]
