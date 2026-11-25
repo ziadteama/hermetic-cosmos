@@ -16,9 +16,9 @@ say "Backing up current settings to $C/backup"
   gsettings get org.gnome.desktop.interface color-scheme; } > "$C/backup/desktop.txt" 2>/dev/null || true
 
 say "Copying Ouro, quotes and the greeting"
-cp "$HERE/terminal/greet.sh" "$HERE/terminal/quotes.txt" "$C/"
+cp "$HERE/terminal/greet.sh" "$HERE/terminal/live.sh" "$HERE/terminal/quotes.txt" "$C/"
 cp "$HERE"/terminal/mascot/* "$C/mascot/"
-chmod +x "$C/greet.sh"; ln -sf "$C/greet.sh" "$HOME/.local/bin/ouro"
+chmod +x "$C/greet.sh" "$C/live.sh"; ln -sf "$C/greet.sh" "$HOME/.local/bin/ouro"
 
 if ! fc-list | grep -q "JetBrainsMono Nerd Font"; then
   say "Installing JetBrainsMono Nerd Font"

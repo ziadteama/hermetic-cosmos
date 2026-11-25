@@ -119,6 +119,7 @@ In the desktop app: click **+** next to the prompt box, then **Plugins** → **A
 - **Ouro's greeting.** Every new terminal shows Ouro, the date, the moon phase and a random line from the Emerald Tablet, Spinoza, Heraclitus, the Upanishads, Blake, Muir, or Ouro himself.
 - **`ouro` command.** `ouro`, `ouro think`, `ouro error` and `ouro dj` show his moods.
 - **DJ Ouro.** When music is playing (Spotify, a browser tab, VLC, any player that speaks MPRIS), a new terminal shows Ouro on two wooden decks, wearing a vine headband with flower ear cups.
+- **`ouro live`.** Keeps Ouro on screen and reacting: he DJs (records spinning, a hand to his headphones) while music plays and goes back to chilling within about 1.5 s of a pause. `q` leaves. It uses about 3% of one CPU core while open and nothing once closed.
 
 ### On the desktop
 
@@ -221,6 +222,7 @@ hermetic-cosmos/
 │   └── types/index.d.ts              the mod's state contract
 ├── terminal/
 │   ├── greet.sh                      Ouro + quote + moon phase
+│   ├── live.sh                       `ouro live`: animated Ouro that follows your music
 │   ├── mascot/ouro-*.txt             Ouro's moods (greet, think, error, dj), with colour tokens
 │   ├── quotes.txt
 │   ├── starship.toml                 the △ / ▽ prompt

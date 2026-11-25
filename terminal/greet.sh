@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Hermetic Cosmos greeting: Ouro + a line from above.  Usage: greet.sh [greet|think|error|dj]
+# Hermetic Cosmos greeting: Ouro + a line from above.  Usage: greet.sh [greet|think|error|dj|live]
 C="$HOME/.config/cosmos"; M="$C/mascot"; mood="${1:-greet}"
+[[ $mood == live ]] && exec "$C/live.sh"   # Ouro stays on screen and reacts to your music
 
 # with no mood given, Ouro is on the decks while any MPRIS player (Spotify, a browser, VLC…) plays
 playing() {

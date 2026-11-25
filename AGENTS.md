@@ -111,6 +111,7 @@ The terminal palette, ANSI 0 to 15:
 ### Terminal pieces (`terminal/`)
 
 - **`greet.sh`** prints the art from `mascot/ouro-<mood>.txt`, or `custom.txt` if present, side by side with the date, the moon phase and a random line from `quotes.txt`.
+  - `greet.sh live` (`ouro live`) runs `live.sh`: a redraw loop (0.45 s a frame, players asked every 1.5 s) over `ouro-dj.txt`, `ouro-dj-1..3.txt` and `ouro-greet.txt`. The frames are `djArt(0..3)` from the mod.
   - Moods: `greet` (default), `think`, `error`, `dj`. With no argument it picks `dj` when an MPRIS player reports `Playing` (checked with `busctl`).
   - Colour tokens: `{g}` gold, `{t}` teal, `{v}` violet, `{s}` silver, `{r}` rose, `{e}` ember, `{m}` moss, `{w}` bark, `{o}` soil, `{R}` root, `{d}` dim, `{0}` reset.
   - Keep art lines under 32 visible characters so the right-hand column lines up.
