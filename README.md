@@ -1,6 +1,15 @@
-# Hermetic Cosmos ✡
+<div align="center">
 
-*As above, so below.* A pantheist, Hermetic theme for your terminal, your desktop and Claude Code. It comes with **Ouro**, a sleepy little forest wanderer with a sprout on his head, a mushroom buddy, and roots that reach down to a star buried in the soil.
+# ✡ Hermetic Cosmos
+
+**As above, so below.**
+
+A pantheist, Hermetic theme for your terminal, your desktop and Claude Code,<br>
+looked after by **Ouro**, a sleepy little forest wanderer with roots that reach down to the stars.
+
+`Ubuntu / GNOME` · `bash` · `Claude Code` · `MIT`
+
+</div>
 
 ```
   ☽       \ | /
@@ -19,68 +28,219 @@
        /|\     /|\
       / | \   / | \
      ·   ·  ✶   ·   ·
+
+△ ~/projects/cosmos ⟡ ⎇ main ✶~2
+▽ ❯
 ```
 
-## Claude Code mod
+---
 
-In Claude Code, Ouro replaces the welcome logo, with the moon phase and a line from the Emerald Tablet, Spinoza, Heraclitus or Ouro himself.
+## Contents
 
-- **Status line:** shows `△ as above ⟡ ☽ full moon ⟡ ouro (◡‿◡)`. Ouro's face changes while Claude works, and he wilts when a tool call fails.
-- **Working line:** the orange star becomes a seed that sprouts, blooms and turns into the moon, with words like *ouro is asking the mushrooms…*
-- **End of a turn:** reads *Bloomed for 12s* instead of *Baked*.
-- **`/ouro` command:** calls him up. Try `/ouro think` and `/ouro error`.
-- **Desktop app:** gets a night-indigo and gold color theme.
+- [The idea](#the-idea)
+- [Quick start](#quick-start)
+- [What you get](#what-you-get)
+- [Requirements](#requirements)
+- [Make it yours](#make-it-yours)
+- [Uninstall](#uninstall)
+- [Troubleshooting](#troubleshooting)
+- [Repository layout](#repository-layout)
+- [For AI agents](#for-ai-agents)
 
-Install it at the prompt of a terminal Claude Code session:
+---
+
+## The idea
+
+The theme follows the old Hermetic maxim from the Emerald Tablet: *that which is above is like that which is below.* Every part of it has an above and a below.
+
+| | Above | Between | Below |
+| --- | --- | --- | --- |
+| **Colour** | Sun gold `#d4af37` | Nebula violet `#8a6bd1`, the soul | Earth teal `#4fb3a9` |
+| **Prompt** | `△` where you are | | `▽` where you type |
+| **Ouro** | a sprout reaching for the moon | Ouro himself | roots, with a star in the soil |
+| **Wallpaper** | a starry sky | a hexagram on the horizon | the sky reflected in still water |
+
+The full palette:
+
+| Name | Hex | Used for |
+| --- | --- | --- |
+| Night | `#0b0a1a` | background |
+| Parchment | `#ece6d6` | text |
+| Sun gold | `#d4af37` | directories, headings, "above" |
+| Earth teal | `#4fb3a9` | input line, success, "below" |
+| Nebula | `#8a6bd1` | git branch |
+| Moon silver | `#c0c8d8` | dates, quiet info |
+| Rose | `#c77d9b` | quotes, git changes |
+| Ember | `#e07a5f` | errors |
+| Moss | `#7fa36b` | Ouro's sprout and grass |
+| Bark | `#9a7b55` | soil, a wilted sprout |
+
+---
+
+## Quick start
+
+### 1. Terminal and desktop
+
+```bash
+git clone https://github.com/ziadteama/hermetic-cosmos ~/hermetic-cosmos
+~/hermetic-cosmos/install.sh
+```
+
+Then open a **new** terminal window. To keep your current wallpaper, run `install.sh --no-desktop` instead.
+
+### 2. Claude Code
+
+At the prompt of a terminal Claude Code session:
 
 ```
 /plugin install hermetic-cosmos --marketplace ziadteama/hermetic-cosmos
 ```
 
-Answer `y` to add the marketplace, then press Enter for the user scope. From a shell:
+Answer `y` to add the marketplace, then press **Enter** for the user scope. Or from a shell:
 
-```
+```bash
 claude plugin install hermetic-cosmos --marketplace ziadteama/hermetic-cosmos
 ```
 
-In the desktop app: click **+** next to the prompt box, then **Plugins**, **Add marketplace** with `ziadteama/hermetic-cosmos`, then **Add plugin**.
+In the desktop app: click **+** next to the prompt box, then **Plugins** → **Add marketplace** with `ziadteama/hermetic-cosmos` → **Add plugin**.
 
-Tip: run `/theme` and pick **Dark mode (ANSI colors only)**, so Claude Code uses the terminal palette below instead of its own orange.
+> **Tip:** in Claude Code, run `/theme` and pick **Dark mode (ANSI colors only)**. Claude Code then draws with your terminal's Cosmos palette instead of its own orange.
 
-## Terminal and desktop (Ubuntu / GNOME, bash)
+---
+
+## What you get
+
+### In the terminal
+
+- **Cosmos profile.** A new gnome-terminal profile, set as the default, with the full 16-colour palette, JetBrainsMono Nerd Font and slight transparency. Your old profile is kept.
+- **Two-line prompt** (Starship):
+  - `△` gold shows the folder, git branch and changes
+  - `▽ ❯` teal is where you type, and turns ember with the exit code after a failed command
+- **Ouro's greeting.** Every new terminal shows Ouro, the date, the moon phase and a random line from the Emerald Tablet, Spinoza, Heraclitus, the Upanishads, Blake, Muir, or Ouro himself.
+- **`ouro` command.** `ouro`, `ouro think` and `ouro error` show his three moods.
+
+### On the desktop
+
+- **Mirror wallpaper** (4K, drawn on your machine). A starry sky and crescent moon reflected in still water, with a gold and teal hexagram sitting on the horizon.
+- **Dark mode**, turned on.
+
+### In Claude Code
+
+| Where | What changes |
+| --- | --- |
+| Welcome screen | Ouro replaces the logo, with the moon phase and a quote |
+| Status line | `△ as above ⟡ ☽ full moon ⟡ ouro (◡‿◡) all is one, bro` |
+| Working line | the orange star becomes a seed that sprouts, blooms and turns into the moon: *✿ ouro is asking the mushrooms… (14s)* |
+| End of a turn | *Bloomed for 12s*, *Composted for 1m 4s* instead of *Baked* |
+| Tool errors | Ouro wilts `(×o×)` until the next success |
+| `/ouro` | shows Ouro's full art; `/ouro think`, `/ouro error` |
+| Desktop app | a night-indigo and gold colour theme |
+
+---
+
+## Requirements
+
+| Part | Needs |
+| --- | --- |
+| Installer | Ubuntu 22.04+ (or another GNOME distro), bash, `curl`, `unzip`, `python3` with Pillow (`python3-pil`), `dconf`, `gsettings` |
+| Claude Code mod | a Claude Code build that supports hooks-module plugins |
+
+The installer needs no sudo. Everything goes into your home folder:
+
+- `~/.config/cosmos/`
+- `~/.local/bin/`
+- `~/.local/share/fonts/`
+- `~/.config/starship.toml`
+- one marked block in `~/.bashrc`
+
+Using zsh, fish, KDE or macOS? The pieces still work, they just need wiring by hand. See [AGENTS.md](AGENTS.md#other-systems).
+
+---
+
+## Make it yours
+
+| Want to… | Do this |
+| --- | --- |
+| Add quotes | Add lines to `~/.config/cosmos/quotes.txt` as `text\|author`. Use the author `ouro` to make it Ouro's line. |
+| Use your own mascot | Put your own art in `~/.config/cosmos/mascot/custom.txt`, or `custom.png` (needs `chafa`). Delete it to bring Ouro back. |
+| Silence the greeting once | `COSMOS_QUIET=1 bash` |
+| Change the prompt | Edit `~/.config/starship.toml` |
+| Change Claude Code's words | Edit the `SPIN` (working line) and `DONE` (end of turn) lists in `claude-code/hooks/register.tsx` |
+| Redraw the wallpaper | `python3 terminal/wallpaper.py 3840 2400 ~/.config/cosmos/wallpaper-4k.png` |
+
+Colour tokens you can use in mascot `.txt` files: `{g}` gold, `{t}` teal, `{v}` violet, `{s}` silver, `{r}` rose, `{e}` ember, `{m}` moss, `{w}` bark, `{o}` soil, `{R}` root, `{d}` dim, `{0}` reset.
+
+---
+
+## Uninstall
+
+```bash
+~/hermetic-cosmos/uninstall.sh
+```
+
+The uninstaller:
+
+- removes the `~/.bashrc` block
+- switches the terminal back to your previous profile and deletes the Cosmos one
+- restores your wallpaper, colour scheme and Starship config from `~/.config/cosmos/backup/`
+
+It leaves the font, the Starship binary and `~/.config/cosmos/` in place. The last lines it prints say how to remove those too.
+
+For Claude Code:
+
+```bash
+claude plugin uninstall hermetic-cosmos
+```
+
+---
+
+## Troubleshooting
+
+| Problem | Fix |
+| --- | --- |
+| Symbols show as empty boxes | Log out and back in so the new font loads. Check that Terminal → Preferences → Cosmos uses *JetBrainsMono Nerd Font*. |
+| No greeting or prompt in a new terminal | Run `grep -n cosmos ~/.bashrc`. The block must be there and your terminal must start an interactive bash. |
+| The old profile still opens | Terminal → Preferences → click the ▾ next to *Cosmos* → **Set as default**. |
+| Claude Code still looks orange | Run `/theme` → **Dark mode (ANSI colors only)**, then restart Claude Code. |
+| Ouro shows twice in Claude Code | A dev copy and the installed copy are both loaded. Restart Claude Code. |
+| `wallpaper.py` fails | Run `sudo apt install python3-pil`. |
+
+---
+
+## Repository layout
 
 ```
-git clone https://github.com/ziadteama/hermetic-cosmos ~/hermetic-cosmos
-~/hermetic-cosmos/install.sh          # add --no-desktop to skip the wallpaper
+hermetic-cosmos/
+├── .claude-plugin/marketplace.json   makes this repo installable as a Claude Code marketplace
+├── claude-code/                      the Claude Code mod
+│   ├── .claude-plugin/plugin.json
+│   ├── hooks/register.tsx            all of the mod's behaviour
+│   ├── hooks/make-colors.js          desktop-app colour helper (vendored, do not edit)
+│   └── types/index.d.ts              the mod's state contract
+├── terminal/
+│   ├── greet.sh                      Ouro + quote + moon phase
+│   ├── mascot/ouro-*.txt             Ouro's three moods, with colour tokens
+│   ├── quotes.txt
+│   ├── starship.toml                 the △ / ▽ prompt
+│   └── wallpaper.py                  draws the mirror wallpaper (Pillow)
+├── install.sh
+├── uninstall.sh
+├── AGENTS.md                         setup and editing guide for AI coding agents
+└── CLAUDE.md                         points Claude Code at AGENTS.md
 ```
 
-The installer:
+---
 
-- backs up your settings to `~/.config/cosmos/backup/`
-- installs JetBrainsMono Nerd Font and the Starship prompt into your home folder (no sudo)
-- adds a **Cosmos** gnome-terminal profile and the two-line △ / ▽ prompt
-- shows Ouro and a random quote in every new terminal
-- draws the mirror wallpaper: a starry sky reflected in still water, with a gold and teal hexagram on the horizon
+## For AI agents
 
-You can re-run it safely.
+If you're an AI coding agent (Claude Code, Codex, Antigravity, Cursor…) asked to set this up, read **[AGENTS.md](AGENTS.md)** first. It covers checking the system, the order of steps, what to back up, how to verify, and how to roll back.
 
-| Colour | Hex | Meaning |
-| --- | --- | --- |
-| Night | `#0b0a1a` | background |
-| Sun gold | `#d4af37` | above |
-| Earth teal | `#4fb3a9` | below |
-| Nebula | `#8a6bd1` | the soul between |
-| Moss | `#7fa36b` | Ouro's sprout |
-| Ember | `#e07a5f` | errors |
+---
 
-**Make it yours.** Add lines to `~/.config/cosmos/quotes.txt` (`text|author`). To swap in your own mascot, put a `custom.txt` or `custom.png` in `~/.config/cosmos/mascot/`.
+<div align="center">
 
-**Undo.** Delete the `# >>> cosmos >>>` block from `~/.bashrc`, pick your old profile in Terminal → Preferences, and restore the wallpaper from `~/.config/cosmos/backup/desktop.txt`.
+MIT licensed · Ouro is an original character · the greeting uses short quotations from classic texts and writers
 
-## Layout
+*bro… you're basically stardust with wifi.*
 
-- `claude-code/`: the Claude Code mod (`hooks/register.tsx`)
-- `terminal/`: greeting, Ouro's art, quotes, Starship config, wallpaper generator
-- `install.sh`: the terminal and desktop installer
-
-MIT licensed. Ouro is an original character.
+</div>
