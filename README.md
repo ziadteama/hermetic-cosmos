@@ -117,7 +117,8 @@ In the desktop app: click **+** next to the prompt box, then **Plugins** → **A
   - `△` gold shows the folder, git branch and changes
   - `▽ ❯` teal is where you type, and turns ember with the exit code after a failed command
 - **Ouro's greeting.** Every new terminal shows Ouro, the date, the moon phase and a random line from the Emerald Tablet, Spinoza, Heraclitus, the Upanishads, Blake, Muir, or Ouro himself.
-- **`ouro` command.** `ouro`, `ouro think` and `ouro error` show his three moods.
+- **`ouro` command.** `ouro`, `ouro think`, `ouro error` and `ouro dj` show his moods.
+- **DJ Ouro.** When music is playing (Spotify, a browser tab, VLC, any player that speaks MPRIS), a new terminal shows Ouro on two wooden decks, wearing a vine headband with flower ear cups.
 
 ### On the desktop
 
@@ -133,7 +134,8 @@ In the desktop app: click **+** next to the prompt box, then **Plugins** → **A
 | Working line | the orange star becomes a seed that sprouts, blooms and turns into the moon: *✿ ouro is asking the mushrooms… (14s)* |
 | End of a turn | *Bloomed for 12s*, *Composted for 1m 4s* instead of *Baked* |
 | Tool errors | Ouro wilts `(×o×)` until the next success |
-| `/ouro` | shows Ouro's full art; `/ouro think`, `/ouro error` |
+| Music playing | only while a player is playing: an animated DJ Ouro above the prompt (records spinning, one hand to his headphones, then the other) with the track and artist; the status line reads `ouro ♪(◠‿◠)♬ spinning <track>`. It stops when the music stops (checked every 3 s, Linux only) |
+| `/ouro` | shows Ouro's full art; `/ouro think`, `/ouro error`, `/ouro dj` |
 | Desktop app | a night-indigo and gold colour theme |
 
 ---
@@ -219,7 +221,7 @@ hermetic-cosmos/
 │   └── types/index.d.ts              the mod's state contract
 ├── terminal/
 │   ├── greet.sh                      Ouro + quote + moon phase
-│   ├── mascot/ouro-*.txt             Ouro's three moods, with colour tokens
+│   ├── mascot/ouro-*.txt             Ouro's moods (greet, think, error, dj), with colour tokens
 │   ├── quotes.txt
 │   ├── starship.toml                 the △ / ▽ prompt
 │   └── wallpaper.py                  draws the mirror wallpaper (Pillow)

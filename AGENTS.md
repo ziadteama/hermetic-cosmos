@@ -111,7 +111,7 @@ The terminal palette, ANSI 0 to 15:
 ### Terminal pieces (`terminal/`)
 
 - **`greet.sh`** prints the art from `mascot/ouro-<mood>.txt`, or `custom.txt` if present, side by side with the date, the moon phase and a random line from `quotes.txt`.
-  - Moods: `greet` (default), `think`, `error`.
+  - Moods: `greet` (default), `think`, `error`, `dj`. With no argument it picks `dj` when an MPRIS player reports `Playing` (checked with `busctl`).
   - Colour tokens: `{g}` gold, `{t}` teal, `{v}` violet, `{s}` silver, `{r}` rose, `{e}` ember, `{m}` moss, `{w}` bark, `{o}` soil, `{R}` root, `{d}` dim, `{0}` reset.
   - Keep art lines under 32 visible characters so the right-hand column lines up.
 - **`quotes.txt`**: one `text|author` per line. The author `ouro` marks Ouro's own lines. Use short quotations only.
@@ -126,16 +126,17 @@ All the behaviour is in `hooks/register.tsx`:
 
 | Hook | What it does |
 | --- | --- |
-| `session.start` | sets the desktop-app colours, registers `/ouro` |
-| `ui.render` `Welcome` | Ouro in place of the logo |
-| `ui.render` `StatusLine` | the `△ … ☽ … ouro (◡‿◡)` line; mood from state |
+| `session.start` | sets the desktop-app colours, registers `/ouro`, starts the 3 s music poll (`busctl` over MPRIS) that sets `music` and runs the `beat` tick while a player plays |
+| `ui.render` `Welcome` | Ouro in place of the logo (DJ Ouro and the track if music is playing) |
+| `ui.render` `StatusLine` | the `△ … ☽ … ouro (◡‿◡)` line; mood from state; `dj` while music plays and nothing outranks it (working, error) |
+| `ui.render` `AbovePrompt` | the three-row animated DJ Ouro and track, only while `music` is set |
 | `ui.render` `Spinner` | the sprouting glyph and *ouro is …* words, animated by a `$.clock.every` tick between `prompt.submit` and `turn.complete` |
 | `ui.render` `TurnDuration` | *Bloomed for …* |
 | `tool.call` | sets the mood to `error` on a failed tool call, `greet` on success |
-| `command.run` `ouro` | `/ouro [think\|error]` |
+| `command.run` `ouro` | `/ouro [think\|error\|dj]` |
 
-- State keys (`mood`, `frame`, `startedAt`) are declared in `types/index.d.ts`. Add any new `$.state` key there too.
-- The mod has its own copy of Ouro's art (`MOODS` / `BODY`). Keep it in sync with `terminal/mascot/` when you change him.
+- State keys (`mood`, `frame`, `startedAt`, `music`, `beat`) are declared in `types/index.d.ts`. Add any new `$.state` key there too.
+- The mod has its own copy of Ouro's art (`MOODS` / `BODY`, and `djArt` / `djMini` for the decks). Keep it in sync with `terminal/mascot/` when you change him. `ouro-dj.txt` is `djArt(0)`.
 
 Check every change before committing:
 

@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
-# Hermetic Cosmos greeting: Ouro + a line from above.  Usage: greet.sh [greet|think|error]
+# Hermetic Cosmos greeting: Ouro + a line from above.  Usage: greet.sh [greet|think|error|dj]
 C="$HOME/.config/cosmos"; M="$C/mascot"; mood="${1:-greet}"
+
+# with no mood given, Ouro is on the decks while any MPRIS player (Spotify, a browser, VLC…) plays
+playing() {
+  command -v busctl >/dev/null || return 1
+  local n
+  for n in $(busctl --user --acquired --no-legend --timeout=1 list 2>/dev/null | awk '$1 ~ /^org\.mpris\.MediaPlayer2\./ {print $1}'); do
+    [[ $(busctl --user --timeout=1 get-property "$n" /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player PlaybackStatus 2>/dev/null) == 's "Playing"' ]] && return 0
+  done
+  return 1
+}
+[[ -z "${1:-}" && -f "$M/ouro-dj.txt" ]] && playing && mood=dj
 rgb() { printf '\033[38;2;%d;%d;%dm' "0x${1:1:2}" "0x${1:3:2}" "0x${1:5:2}"; }
 declare -A T=( [s]="$(rgb '#c0c8d8')" [m]="$(rgb '#7fa36b')" [r]="$(rgb '#c77d9b')" [g]="$(rgb '#d4af37')"
   [t]="$(rgb '#4fb3a9')" [e]="$(rgb '#e07a5f')" [w]="$(rgb '#9a7b55')" [o]="$(rgb '#6e5a40')"
