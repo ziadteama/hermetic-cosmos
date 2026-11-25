@@ -1,0 +1,5 @@
+{
+  "name": "hermetic-cosmos",
+  "owner": { "name": "ziadteama" },
+  "plugins": [{ "name": "hermetic-cosmos", "source": "./claude-code", "description": "As above, so below: the Hermetic Cosmos theme and Ouro the forest wanderer for Claude Code" }]
+}

@@ -1,0 +1,51 @@
+# Hermetic Cosmos prompt — as above (△ where you are), so below (▽ where you type)
+add_newline = true
+format = """
+[△](bold #d4af37) $directory$git_branch$git_status$python$nodejs$cmd_duration$status
+$character"""
+
+[directory]
+style = "#d4af37"
+format = "[$path]($style)[$read_only]($read_only_style)"
+truncation_length = 4
+truncate_to_repo = false
+read_only = " 🔒"
+
+[git_branch]
+symbol = "⎇ "
+style = "#8a6bd1"
+format = " [⟡](#a9a3b8) [$symbol$branch]($style)"
+
+[git_status]
+style = "#c77d9b"
+format = "( [✶$modified$staged$untracked$ahead_behind]($style))"
+modified = "~$count"
+staged = "+$count"
+untracked = "?$count"
+ahead = "↑$count"
+behind = "↓$count"
+diverged = "↕"
+
+[python]
+format = " [⟡](#a9a3b8) [🜄 $virtualenv]($style)"
+style = "#4fb3a9"
+detect_extensions = []
+detect_files = []
+
+[nodejs]
+format = " [⟡](#a9a3b8) [⬢ $version]($style)"
+style = "#7fa36b"
+
+[cmd_duration]
+min_time = 3000
+format = " [⟡](#a9a3b8) [☽ $duration]($style)"
+style = "#c0c8d8"
+
+[status]
+disabled = false
+format = " [✗ $status]($style)"
+style = "#e07a5f"
+
+[character]
+success_symbol = "[▽ ❯](bold #4fb3a9)"
+error_symbol = "[▽ ❯](bold #e07a5f)"
